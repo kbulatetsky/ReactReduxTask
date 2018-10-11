@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class HomePageComponent extends Component {
   render() {
@@ -6,6 +6,6 @@ export default class HomePageComponent extends Component {
       <div>
         <h1>Home page</h1>
       </div>
-    )
+    );
   }
 }

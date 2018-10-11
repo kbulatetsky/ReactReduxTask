@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class AboutPageComponent extends Component {
   render() {
@@ -7,6 +7,6 @@ export default class AboutPageComponent extends Component {
         <h1>About</h1>
         <p>This is React Redux task.</p>
       </div>
-    )
+    );
   }
 }

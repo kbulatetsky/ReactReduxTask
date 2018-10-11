@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 import React from 'react';
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 import { render } from 'react-dom';
 import {Provider} from 'react-redux';
 import { Router, browserHistory } from 'react-router';
