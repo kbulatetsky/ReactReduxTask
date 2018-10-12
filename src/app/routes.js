@@ -1,15 +1,14 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
+import {Route} from 'react-router-dom';
 
-import App from './App';
-import HomePage from './HomePage';
+import HomePage from '../home/HomePage';
 import BreweriesPage from '../breweries/BreweriesPage';
 import AboutPage from './AboutPage';
 
 export default(
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage}/>
-    <Route path="breweries" component={BreweriesPage}/>
-    <Route path="about" component={AboutPage}/>
-  </Route>
+  <div>
+    <Route path="/" exact component={HomePage}/>
+    <Route path="/breweries" component={BreweriesPage}/>
+    <Route path="/about" component={AboutPage}/>
+  </div>
 );

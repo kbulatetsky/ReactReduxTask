@@ -1,5 +1,6 @@
 const initialState = {
-  breweries: []
+  breweries: [],
+  testCounter: 0
 };
 
 export default initialState;
