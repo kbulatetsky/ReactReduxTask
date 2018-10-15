@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import history from '../app/history';
+
 import * as breweryActions from './BreweriesActions';
 import BreweriesList from './BreweriesList';
 
@@ -15,11 +17,11 @@ class BreweriesPage extends Component {
   }
 
   addBrewery(){
-
+    history.push('/brewery/add');
   }
 
   editBrewery(id){
-
+    history.push(`/brewery/edit/${id}`);
   }
 
   deleteBrewery(id){

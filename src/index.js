@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Provider} from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
 import routes from './app/routes';
 
+import history from './app/history';
 import initialState from './app/initialState';
 import configureStore from './app/configureStore';
 
@@ -25,12 +26,12 @@ breweriesActions.loadBreweries({
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <div>
         <Header/>
         {routes}
       </div>
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('app')
 );
