@@ -10,11 +10,18 @@ import configureStore from './app/configureStore';
 
 import Header from './app/Header';
 
+import * as breweriesActions from './breweries/BreweriesActions';
+
 import './styles/style.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 const store = configureStore(initialState);
+
+breweriesActions.loadBreweries({
+  url: 'https://api.openbrewerydb.org/breweries',
+  dispatch: store.dispatch
+});
 
 ReactDOM.render(
   <Provider store={store}>

@@ -18,9 +18,6 @@ export default  {
       contentBase: path.resolve(__dirname, 'src')
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
     new LiveReloadPlugin()
   ],
   module: {

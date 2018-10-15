@@ -11,7 +11,7 @@ const app = express();
 
 app.use(webpackMiddleware(webpack(webpackConfig)));
 
-app.get('*', function (req, res) {
+app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
@@ -19,6 +19,5 @@ app.listen(port, (err) => {
   if (err) {
     console.log(err);
   } else {
-    open(`http://localhost:${port}`);
   }
 });
