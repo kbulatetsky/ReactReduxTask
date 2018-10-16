@@ -7,6 +7,8 @@ import history from '../app/history';
 import * as breweryActions from './BreweriesActions';
 import BreweriesList from './BreweriesList';
 
+import Loading from '../common/load/Loading';
+
 class BreweriesPage extends Component {
   constructor(props){
     super(props);
@@ -28,18 +30,25 @@ class BreweriesPage extends Component {
     this.props.deleteBrewery(id);
   }
 
+  async componentDidMount(){
+    await this.props.loadBreweries();
+  }
+
   render() {
     return (
       <div>
         <input
           type="submit"
           value="Add brewery"
-          className="btn btn-primary btn-sm mrgn-5"
+          className="btn btn-success btn-sm mrgn-10 mrgn-left-40"
           onClick={this.addBrewery} />
         <BreweriesList
           breweries={this.props.breweries}
           modifyCallback={this.editBrewery}
           deleteCallback={this.deleteBrewery}/>
+        <div className="mrgn-left-40">
+          <Loading />
+        </div>
       </div>
     )
   }
@@ -57,7 +66,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteBrewery: (breweryId) => dispatch(breweryActions.deleteBrewery(breweryId))
+    deleteBrewery: (breweryId) => dispatch(breweryActions.deleteBrewery(breweryId)),
+    loadBreweries: () => breweryActions.loadBreweries(dispatch)
   };
 }
 

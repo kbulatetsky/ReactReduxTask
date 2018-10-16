@@ -7,12 +7,12 @@ const Actions = ({modifyCallback, deleteCallback}) => {
       <input
         type="button"
         value="Edit"
-        className="btn btn-primary btn-sm mrgn-5"
+        className="btn btn-success btn-sm mrgn-5"
         onClick={modifyCallback}/>
       <input
         type="button"
         value="Delete"
-        className="btn btn-primary btn-sm mrgn-5"
+        className="btn btn-danger btn-sm mrgn-5"
         onClick={deleteCallback}/>
     </div>
   );

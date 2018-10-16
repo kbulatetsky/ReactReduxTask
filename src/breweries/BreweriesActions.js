@@ -1,26 +1,55 @@
+import axios from 'axios';
+
 import * as types from './BreweriesActionTypes';
 
-export function loadBrewerySuccess(breweries){
+import * as loadActions from '../common/load/LoadActions';
+
+export function loadBreweriesSuccess(breweries){
   return { type: types.LOAD_BREWERIES_SUCCESS, breweries: breweries };
+}
+
+export function editBrewery(brewery){
+  return { type: types.EDIT_BREWERY, brewery: brewery };
+}
+
+export function addBrewery(brewery){
+  return { type: types.ADD_BREWERY, brewery: brewery };
+}
+
+export function updateBrewery(brewery){
+  return { type: types.UPDATE_BREWERY, brewery: brewery };
 }
 
 export function deleteBrewery(breweryId){
   return { type: types.DELETE_BREWERY, breweryId: breweryId };
 }
 
-export function loadBreweries({url, dispatch}){
-  const xmlhttp = new XMLHttpRequest();
+export async function loadBreweries(dispatch){
+  dispatch(loadActions.loadStart());
+  try {
+    const response = await axios.get('https://api.openbrewerydb.org/breweries');
+    const breweries = response.data;
 
-  xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-          const breweries = JSON.parse(this.responseText);
-          const action = loadBrewerySuccess(breweries);
-          dispatch(action);
-      }
-  };
+    dispatch(loadActions.loadSuccess());
+    dispatch(loadBreweriesSuccess(breweries));
+  }
+  catch (err) {
+    dispatch(loadActions.loadFail(err));
+  }
+}
 
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
+export async function loadBrewery({dispatch, breweryId}){
+  dispatch(loadActions.loadStart());
+  try {
+    const response = await axios.get(`https://api.openbrewerydb.org/breweries/${breweryId}`);
+    const brewery = response.data;
+
+    dispatch(loadActions.loadSuccess());
+    dispatch(editBrewery(brewery));
+  }
+  catch (err) {
+    dispatch(loadActions.loadFail(err));
+  }
 }
 
 

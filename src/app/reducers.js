@@ -1,9 +1,13 @@
 import {combineReducers} from 'redux';
 
-import breweryReducer from '../breweries/breweryReducer';
+import breweriesReducer from '../breweries/breweriesReducer';
+import editBreweryReducer from '../breweries/editBreweryReducer';
+import loadStateReducer from '../common/load/loadStateReducer';
 
 const rootReducer = combineReducers({
-  breweries: breweryReducer
+  breweries: breweriesReducer,
+  editBrewery: editBreweryReducer,
+  loadState: loadStateReducer
 });
 
 export default rootReducer;
