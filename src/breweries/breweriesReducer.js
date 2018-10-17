@@ -7,6 +7,9 @@ export default function breweriesReducer(state = initialState.breweries, action)
     case actionTypes.LOAD_BREWERIES_SUCCESS:
       return [...action.breweries];
 
+    case actionTypes.FILTER_BREWERIES_SUCCESS:
+      return [...action.breweries];
+
     case actionTypes.ADD_BREWERY: {
       const breweries = [...state];
       breweries.splice(0, 0, action.brewery);

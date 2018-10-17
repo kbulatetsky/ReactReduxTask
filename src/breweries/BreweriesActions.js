@@ -8,6 +8,10 @@ export function loadBreweriesSuccess(breweries){
   return { type: types.LOAD_BREWERIES_SUCCESS, breweries: breweries };
 }
 
+export function filterBreweriesSuccess(breweries){
+  return { type: types.FILTER_BREWERIES_SUCCESS, breweries: breweries };
+}
+
 export function editBrewery(brewery){
   return { type: types.EDIT_BREWERY, brewery: brewery };
 }
@@ -32,6 +36,21 @@ export async function loadBreweries(dispatch){
 
     dispatch(loadActions.loadSuccess());
     dispatch(loadBreweriesSuccess(breweries));
+  }
+  catch (err) {
+    dispatch(loadActions.loadFail(err));
+  }
+}
+
+export async function filterBreweries({dispatch, filter}){
+  dispatch(loadActions.loadStart());
+  try {
+    const response = await axios.get(
+      `https://api.openbrewerydb.org/breweries?by_name=${filter.name}&by_city=${filter.city}`);
+    const breweries = response.data;
+
+    dispatch(loadActions.loadSuccess());
+    dispatch(filterBreweriesSuccess(breweries));
   }
   catch (err) {
     dispatch(loadActions.loadFail(err));

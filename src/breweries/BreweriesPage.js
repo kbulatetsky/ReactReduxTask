@@ -6,6 +6,7 @@ import history from '../app/history';
 
 import * as breweryActions from './BreweriesActions';
 import BreweriesList from './BreweriesList';
+import BreweriesFilter from './BreweriesFilter';
 
 import Loading from '../common/load/Loading';
 
@@ -42,6 +43,9 @@ class BreweriesPage extends Component {
           value="Add brewery"
           className="btn btn-success btn-sm mrgn-10 mrgn-left-40"
           onClick={this.addBrewery} />
+        <div className="mrgn-left-40">
+          <BreweriesFilter />
+        </div>
         <BreweriesList
           breweries={this.props.breweries}
           modifyCallback={this.editBrewery}
